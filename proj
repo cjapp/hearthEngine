@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#Script to either remove or build the project temps
+# Use the strings B or RM when entering the script name
+
+#START  CHECK -INPUT-#
+if [ $1 == "B" ]; then
+  if [ ! -d bin/ ]; then
+  #construct new directory
+  mkdir bin
+  fi
+
+  cd bin
+
+  #then use cmake script in main repo to start CMake
+  # if the Makefile hasnt been generated
+  if [ ! -f Makefile ]; then
+     cmake ..
+  fi
+
+
+  #Run make
+  echo "--------RUNNING MAKE:"
+  make
+
+  if [ $? -eq 0 ]; then
+    mv 2dGameEngine ..
+  else
+    echo "2dGameEngine Failed to compile"
+  fi
+
+#change directories back to main repo
+cd ..
+
+elif [ $1 == "RM" ]; then
+
+  #removing bin if it exists
+  if [ -d bin/ ]; then
+    rm -r bin
+    echo "Removed bin/"
+  fi
+
+  #removing hearthEngine exe if it exists
+  if [ -a 2dGameEngine ]; then
+    rm 2dGameEngine
+    echo "Removed 2dGameEngine exectuble"
+  fi
+  echo "Everthing needed to be removed was removed."
+fi
+#END  CHECK -INPUT-#
+
+
