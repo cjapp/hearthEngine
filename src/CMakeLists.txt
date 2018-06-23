@@ -5,13 +5,6 @@
 add_subdirectory("engine")
 
 set(SRC_SOURCE_FILES 
-main.cpp
-test.h
-test.cpp
-ball.h
-ball.cpp
-rotator.cpp
-rotator.h
 )
 
 add_executable(${PROJECT_NAME} ${SRC_SOURCE_FILES})
