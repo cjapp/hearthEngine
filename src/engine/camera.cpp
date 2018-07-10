@@ -56,7 +56,7 @@ namespace Hearth
    */
   void Camera::windowResized()
   {
-    m_winW = float (Window::Instance()->Width()/2.0f);
-    m_winH = float (Window::Instance()->Height()/2.0f);
+    m_winW = float (Window::Instance().Width()/2.0f);
+    m_winH = float (Window::Instance().Height()/2.0f);
   }
 }

@@ -26,7 +26,6 @@ namespace Hearth
 {
 
   class UI;
-  class Application;
 
   class State
   {
@@ -44,8 +43,6 @@ namespace Hearth
       std::vector<GameObject*> m_gameObjects;
       std::vector<UI*> m_ui;
       unsigned int m_objs;
-
-      Application* m_app;
 
       bool m_isInitialized;
 
@@ -88,7 +85,6 @@ namespace Hearth
       GameObject* checkCollisionsTag(GameObject* obj, std::string& tag);
       GameObject* checkCollisionsName(GameObject* obj, std::string& name);
 
-      void setApplication(Application* ap){m_app = ap;}
       void endGame();
 
   };

@@ -24,8 +24,6 @@
 namespace Hearth
 {
 
-  Application* Application::m_instance = nullptr;
-
   Application::Application():
     m_appName(""),
     m_width(0),
@@ -35,36 +33,6 @@ namespace Hearth
     m_running = true;
     m_currentState = nullptr;
   }
-
-
-  Application::~Application()
-  {
-    m_currentState = nullptr;
-  }
-
-
-  /**
-   * @brief function that returns the application instance pointer for
-   *        the singleton implementation
-   *
-   * @return returns the pointer the application singleton
-   */
-  Application* Application::Instance()
-  {
-    if(m_instance == nullptr)
-      m_instance = new Application();
-
-    return m_instance;
-  }
-
-
-  /**
-   * @brief function that ends the game loop
-   */
-  void Application::endGame()
-  {
-    m_running = false;
-  } 
 
 
   /**
@@ -118,9 +86,9 @@ namespace Hearth
     Error::printMessage("--Initializing Core Systems...");
 
     std::string strname(name);
-    m_appName = strname;
-    m_width = width;
-    m_height = height;
+    Instance().m_appName = strname;
+    Instance().m_width = width;
+    Instance().m_height = height;
 
     if(SDL_Init(SDL_INIT_VIDEO) > 0)
     {
@@ -128,16 +96,43 @@ namespace Hearth
     } 
 
     Random::seed(time(NULL));
-    Window::Instance()->init(m_appName);
-    Window::Instance()->setDimensions(m_width, m_height);
+    Window::init(strname);
+    Window::Instance().setDimensions(width, height);
     Render::Instance()->init();
-    m_input.init();
 
-    m_init = true;
+    Instance().m_input.init(); 
+
+    Instance().m_init = true;
     Error::printMessage("--Initializing Core Systems complete.");
   }
 
 
+  /**
+   * @brief function that uninitializes the game when it ends
+   */
+  void Application::unInitialize()
+  {
+    Error::printMessage("--Uninitializing Core Systems...");
+
+    Instance().m_currentState = nullptr;
+
+    //clear the state stack
+    for(int i = Instance().m_states.size()-1; i >= 0; i--)
+    {
+      Instance().m_states[i]->_clear();
+    }
+    Instance().m_states.clear();
+
+    ResourceManager::clear();
+
+    Render::Instance()->uninit();/*IMG_QUIT, TTF_QUIT */
+    Window::uninit();
+
+    SDL_Quit();
+    Error::printMessage("--Uninitialized Core Systems...");
+  }
+
+  
   /**
    * @brief gets input via SDL_event manager and processes it for 
    *        the input manager
@@ -166,41 +161,15 @@ namespace Hearth
   void Application::draw()
   {
     //clear screen to prepare for drawing
-    Window::Instance()->clear();
+    Window::clear();
 
     //draw the state/scene
     if(m_currentState != nullptr)
       m_currentState->draw();
 
     //render the screen
-    Window::Instance()->render();
+    Window::render();
 
-  }
-
-
-  /**
-   * @brief function that uninitializes the game when it ends
-   */
-  void Application::unInitialize()
-  {
-    Error::printMessage("--Uninitializing Core Systems...");
-
-    m_currentState = nullptr;
-
-    //clear the state stack
-    for(int i = m_states.size()-1; i >= 0; i--)
-    {
-      m_states[i]->_clear();
-    }
-    m_states.clear();
-
-    ResourceManager::clear();
-
-    Render::Instance()->uninit();/*IMG_QUIT, TTF_QUIT */
-    Window::Instance()->uninit();
-
-    SDL_Quit();
-    Error::printMessage("--Uninitialized Core Systems...");
   }
 
 
@@ -213,7 +182,6 @@ namespace Hearth
   {
     if(s != nullptr)
     {
-      s->setApplication(this);
       m_states.push_back(s);
 
       if(m_currentState == nullptr)

@@ -9,11 +9,10 @@
  */
 
 #include "error.hpp"
+#include "application.hpp"
 
 #include<iostream>
 #include<stdlib.h>
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_image.h>
 
 namespace Hearth
 {
@@ -36,10 +35,7 @@ namespace Hearth
     int input;
     std::cin >> input;
 
-    Render::Instance()->uninit();
-    Window::Instance()->uninit();
-    
-    SDL_Quit();
+    Application::unInitialize();
 
     exit(3);
 

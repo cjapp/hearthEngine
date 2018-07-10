@@ -341,9 +341,7 @@ namespace Hearth
    */
   void State::endGame()
   {
-
-    if(m_app != nullptr)
-      m_app->endGame();
+    Application::endGame();
   }
 
 }//end Hearth

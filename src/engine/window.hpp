@@ -20,15 +20,15 @@ namespace Hearth
   class Window
   {
     public:
-      static Window* Instance();
+      static Window& Instance()
+      {
+        static Window instance;
+        return instance;
+      }
 
-      void init(const std::string&);
-      void uninit();
-      void clear();
-      void render();
 
-      int Width(){return m_width;}
-      int Height(){return m_height;}
+      int Width()const{return m_width;}
+      int Height()const{return m_height;}
       SDL_Window* getSDLWindow(){return m_window;}
 
       Color getColor(){return m_colorClear;}
@@ -38,12 +38,16 @@ namespace Hearth
       void setFullScreen();
       void setFullScreenDesktop();
 
+    protected:
+      friend class Application;
+      static void init(const std::string& name){Instance()._init(name);}
+      static void uninit(){Instance()._uninit();}
+      static void clear(){Instance()._clear();}
+      static void render(){Instance()._render();}
 
     private:
-      Window();
-      ~Window();
-
-      static Window* m_instance;
+      Window(){}
+      ~Window(){}
 
       /*Window variables for the application*/
       SDL_Window* m_window;
@@ -53,6 +57,11 @@ namespace Hearth
       int m_height;
 
       Color m_colorClear;
+
+      void _init(const std::string&);
+      void _uninit();
+      void _clear();
+      void _render();
   };
 
 }//end Hearth

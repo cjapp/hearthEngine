@@ -30,7 +30,6 @@ namespace Hearth
   class Application
   {
     private:
-      static Application* m_instance;
       std::string m_appName;
       int m_height;
       int m_width;
@@ -41,7 +40,6 @@ namespace Hearth
       State* m_currentState; 
       std::vector<State*> m_states; 
 
-
       /*Even though these are singletons, 
         just need to initialize them somewhere*/
       ResourceManager m_resourceManager;
@@ -49,24 +47,30 @@ namespace Hearth
 
     public:
       Application();
-      ~Application();
 
-      static Application* Instance();
+      static Application& Instance()
+      {
+        static Application instance;
+        return instance;
+      }
 
-      void endGame();
+      static void endGame(){Instance().m_running = false;}
 
       void mainLoop();
 
-      void initialize(const char* name, int width, int height);
+      static void initialize(const char* name, int width, int height);
       void getInput();     
       void draw();        
-      void unInitialize();
+      static void unInitialize();
 
       //functions to handle states of game
       State* getCurrentState(){return m_currentState;}
       void AddState(State* s);
       bool switchState(int stateIndex);
       bool switchState(char* name);
+
+      Application(Application const&) = delete;
+      void operator=(Application const&) = delete;
 
   };
 

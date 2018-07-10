@@ -13,46 +13,13 @@
 
 namespace Hearth
 {
-  Window* Window::m_instance;
 
-
-  Window::Window():
-    m_window(nullptr)
-  {
-
-  }
-
-
-  Window::~Window()
-  {
-
-  }
-
-
-
-/**
-* @brief function that returns the window singleton pointer
-*
-* @return the singleton instance of the window class
-*/
-  Window* Window::Instance()
-  {
-    if(m_instance == nullptr)
-    {
-      m_instance = new Window();
-    }
-
-    return m_instance;
-
-  }
-
-
-/**
-* @brief function that initializes the window with the given name
-*
-* @param name name for the window
-*/
-  void Window::init(const std::string& name)
+  /**
+   * @brief function that initializes the window with the given name
+   *
+   * @param name name for the window
+   */
+  void Window::_init(const std::string& name)
   {
 
     if(m_window != nullptr)
@@ -80,10 +47,10 @@ namespace Hearth
   }
 
 
-/**
-* @brief function that uninitializes the window
-*/
-  void Window::uninit()
+  /**
+   * @brief function that uninitializes the window
+   */
+  void Window::_uninit()
   {
     if(m_window != nullptr)
       SDL_DestroyWindow(m_window);
@@ -97,7 +64,7 @@ namespace Hearth
   /**
    * @brief clears the window and preps to draw onto it again
    */
-  void Window::clear()
+  void Window::_clear()
   {
     SDL_SetRenderDrawColor(Render::Instance()->getRenderer(), m_colorClear.r, m_colorClear.g, m_colorClear.b, m_colorClear.a);
     SDL_RenderClear(Render::Instance()->getRenderer());
@@ -107,18 +74,18 @@ namespace Hearth
   /**
    * @brief Renders the shapes stored in the renderer to the window
    */
-  void Window::render()
+  void Window::_render()
   {
     SDL_RenderPresent(Render::Instance()->getRenderer());
   }
 
 
-/**
-* @brief function that sets the dimensions of the window
-*
-* @param width the width dimensions of the window
-* @param height the height dimensions of the window
-*/
+  /**
+   * @brief function that sets the dimensions of the window
+   *
+   * @param width the width dimensions of the window
+   * @param height the height dimensions of the window
+   */
   void Window::setDimensions(int width, int height)
   {
     m_width = width;
@@ -128,18 +95,19 @@ namespace Hearth
   }
 
 
-/**
-* @brief function that sets the dimensions of the window to full screen
-*/
+  /**
+   * @brief function that sets the dimensions of the window to full screen
+   */
   void Window::setFullScreen()
   {
     SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
     SDL_GetWindowSize(m_window, &m_width, &m_height);
   }
 
-/**
-* @brief function that sets the dimenstions of the window to the full screen of the desktop
-*/
+
+  /**
+   * @brief function that sets the dimenstions of the window to the full screen of the desktop
+   */
   void Window::setFullScreenDesktop()
   {
     SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN_DESKTOP);

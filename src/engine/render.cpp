@@ -48,10 +48,10 @@ namespace Hearth
     Error::printMessage("--Initializing Renderer");
 
     //initialize the SDL_Renderer
-    if(m_renderer == nullptr && Window::Instance()->getSDLWindow() == nullptr)
+    if(m_renderer == nullptr && Window::Instance().getSDLWindow() == nullptr)
       Error::fatalError("Error:Failed to init Renderer, Window or renderer nonexistant");
 
-    m_renderer = SDL_CreateRenderer(Window::Instance()->getSDLWindow(), -1, SDL_RENDERER_ACCELERATED);
+    m_renderer = SDL_CreateRenderer(Window::Instance().getSDLWindow(), -1, SDL_RENDERER_ACCELERATED);
     if(m_renderer == nullptr)
     {
       printf("SDL failed to create renderer. SDL ERROR: %s\n", SDL_GetError());
