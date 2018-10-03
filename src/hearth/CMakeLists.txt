@@ -52,4 +52,4 @@ set(ENGINE_SOURCE_FILES
     window.cpp
 )
 
-add_library(engine ${ENGINE_SOURCE_FILES})
+add_library(hearth ${ENGINE_SOURCE_FILES})

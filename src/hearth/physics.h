@@ -4,7 +4,7 @@
  * @author Colby Japp
  * @version 1.0.0
  * @date 2017-12-27
- * @edited 2017-12-27
+ * @edited Wed 11 Jul 2018 11:38:08 AM PDT
  */
 #ifndef PHYSICS_H
 #define PHYSICS_H 
@@ -14,17 +14,17 @@ namespace Hearth
 
   class Physics
   {
-    private:
-      static Physics* m_instance;
-      static int m_instanceCount; 
-
     public:
-      Physics();
-      ~Physics();
-      
-      void free();
+      Physics(){}
+      ~Physics(){}
 
-      static Physics* Instance();
+      static Physics Instance()
+      {
+        static Physics instance;
+        return instance;
+      }
+      
+
   };
 
 }//end Hearth

@@ -27,6 +27,10 @@ namespace Hearth
       HObject(std::string name,float x,float y);
       ~HObject();
 
+      //functions that are not get,sets,or comps
+      void translate(float x, float y);
+      void moveTowards(float x, float y, float speed);
+
       //function dealing with the name of the object
       void setName(std::string name){m_name = name;}
       std::string& getName(){return m_name;}
@@ -47,16 +51,14 @@ namespace Hearth
       Transform& getTransform(){return m_transform;}
       void setPosition(float x,float y){m_transform.setPosition(x,y);}
       Vector2& getPosition(){return m_transform.getPosition();}
-      void translate(float x, float y);
-      void moveTowards(float x, float y, float speed);
 
       //comparison operators for the class
-      bool operator==(HObject& obj)const{return m_id == obj.m_id;}
-      bool operator!=(HObject& obj)const{return m_id != obj.m_id;}
-      bool operator>=(HObject& obj)const{return m_id >= obj.m_id;}
-      bool operator<=(HObject& obj)const{return m_id <= obj.m_id;}
-      bool operator>(HObject& obj)const{return m_id > obj.m_id;}
-      bool operator<(HObject& obj)const{return m_id < obj.m_id;}
+      bool operator==(const HObject& obj)const{return m_id == obj.m_id;}
+      bool operator!=(const HObject& obj)const{return m_id != obj.m_id;}
+      bool operator>=(const HObject& obj)const{return m_id >= obj.m_id;}
+      bool operator<=(const HObject& obj)const{return m_id <= obj.m_id;}
+      bool operator>(const HObject& obj)const{return m_id > obj.m_id;}
+      bool operator<(const HObject& obj)const{return m_id < obj.m_id;}
   };
 
 }//end Hearth

@@ -52,8 +52,15 @@ namespace Hearth
       int getWidth(){return m_width;}
 
       Collider* getCollider(){return m_collider;}
-
+      
     protected:
+
+      int m_depth;
+      int m_height;
+      int m_width;
+      Sprite* m_sprite;
+      Collider* m_collider;
+
       GameObject* goFindName(std::string obj_name);
       UI*         uiFindName(std::string obj_name);
       GameObject* goFindTag(std::string tag);
@@ -63,14 +70,6 @@ namespace Hearth
 
       GameObject* checkCollisionTag(std::string obj_tag);
       GameObject* checkCollisionName(std::string obj_name);
-
-      int m_depth;
-
-      int m_height;
-      int m_width;
-
-      Sprite* m_sprite;
-      Collider* m_collider;
   };
 
 } // end Hearth
