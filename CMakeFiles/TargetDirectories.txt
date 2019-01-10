@@ -1,8 +1,0 @@
-/home/colby/Documents/csci490/CMakeFiles/rebuild_cache.dir
-/home/colby/Documents/csci490/CMakeFiles/edit_cache.dir
-/home/colby/Documents/csci490/src/CMakeFiles/rebuild_cache.dir
-/home/colby/Documents/csci490/src/CMakeFiles/edit_cache.dir
-/home/colby/Documents/csci490/src/CMakeFiles/2dGameEngine.dir
-/home/colby/Documents/csci490/src/hearth/CMakeFiles/rebuild_cache.dir
-/home/colby/Documents/csci490/src/hearth/CMakeFiles/edit_cache.dir
-/home/colby/Documents/csci490/src/hearth/CMakeFiles/hearth.dir
