@@ -42,7 +42,7 @@
 # (To distribute this file outside of CMake, substitute the full
 #  License text for the above reference.)
 
-find_path(SDL2_TTF_INCLUDE_DIR SDL_image.h
+find_path(SDL2_TTF_INCLUDE_DIR SDL_ttf.h
         HINTS
         ENV SDL2TTFDIR
         ENV SDL2DIR

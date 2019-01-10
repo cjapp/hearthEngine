@@ -16,6 +16,7 @@
 #include "font.h"
 #include "hTime.h"
 #include "random.h"
+#include "soundSystem.h"
 
 #include<time.h>
 #include<string>
@@ -99,6 +100,7 @@ namespace Hearth
     Window::init(strname);
     Window::Instance().setDimensions(width, height);
     Render::Instance()->init();
+    SoundSystem::init();
 
     Instance().m_input.init(); 
 
@@ -127,6 +129,7 @@ namespace Hearth
 
     Render::Instance()->uninit();/*IMG_QUIT, TTF_QUIT */
     Window::uninit();
+    SoundSystem::uninit();
 
     SDL_Quit();
     Error::printMessage("--Uninitialized Core Systems...");

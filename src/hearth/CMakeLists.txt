@@ -36,6 +36,8 @@ set(ENGINE_SOURCE_FILES
     render.cpp
     resourceManager.cpp
     resourceManager.hpp
+    soundSystem.cpp
+    soundSystem.h
     sprite.cpp
     sprite.hpp
     state.cpp

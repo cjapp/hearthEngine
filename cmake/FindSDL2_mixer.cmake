@@ -7,7 +7,7 @@
 #   SDL2_MIXER_LIBRARIES, the name of the library to link against
 #   SDL2_MIXER_INCLUDE_DIRS, where to find the headers
 #   SDL2_MIXER_FOUND, if false, do not try to link against
-#   SDL2_MIXER_VERSION_STRING - human-readable string containing the version of SDL_image
+#   SDL2_MIXER_VERSION_STRING - human-readable string containing the version of SDL_mixer
 #
 #
 #
@@ -42,7 +42,7 @@
 # (To distribute this file outside of CMake, substitute the full
 #  License text for the above reference.)
 
-find_path(SDL2_MIXER_INCLUDE_DIR SDL_image.h
+find_path(SDL2_MIXER_INCLUDE_DIR SDL_mixer.h
         HINTS
         ENV SDL2MIXERDIR
         ENV SDL2DIR
@@ -59,7 +59,7 @@ else()
 endif()
 
 find_library(SDL2_MIXER_LIBRARY
-        NAMES SDL2_image
+        NAMES SDL2_mixer
         HINTS
         ENV SDL2MIXERDIR
         ENV SDL2DIR
@@ -67,10 +67,10 @@ find_library(SDL2_MIXER_LIBRARY
         PATHS ${SDL2_MIXER_PATH}
         )
 
-if(SDL2_MIXER_INCLUDE_DIR AND EXISTS "${SDL2_MIXER_INCLUDE_DIR}/SDL_image.h")
-    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_image.h" SDL2_MIXER_VERSION_MAJOR_LINE REGEX "^#define[ \t]+SDL_MIXER_MAJOR_VERSION[ \t]+[0-9]+$")
-    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_image.h" SDL2_MIXER_VERSION_MINOR_LINE REGEX "^#define[ \t]+SDL_MIXER_MINOR_VERSION[ \t]+[0-9]+$")
-    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_image.h" SDL2_MIXER_VERSION_PATCH_LINE REGEX "^#define[ \t]+SDL_MIXER_PATCHLEVEL[ \t]+[0-9]+$")
+if(SDL2_MIXER_INCLUDE_DIR AND EXISTS "${SDL2_MIXER_INCLUDE_DIR}/SDL_mixer.h")
+    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_mixer.h" SDL2_MIXER_VERSION_MAJOR_LINE REGEX "^#define[ \t]+SDL_MIXER_MAJOR_VERSION[ \t]+[0-9]+$")
+    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_mixer.h" SDL2_MIXER_VERSION_MINOR_LINE REGEX "^#define[ \t]+SDL_MIXER_MINOR_VERSION[ \t]+[0-9]+$")
+    file(STRINGS "${SDL2_MIXER_INCLUDE_DIR}/SDL_mixer.h" SDL2_MIXER_VERSION_PATCH_LINE REGEX "^#define[ \t]+SDL_MIXER_PATCHLEVEL[ \t]+[0-9]+$")
     string(REGEX REPLACE "^#define[ \t]+SDL_MIXER_MAJOR_VERSION[ \t]+([0-9]+)$" "\\1" SDL2_MIXER_VERSION_MAJOR "${SDL2_MIXER_VERSION_MAJOR_LINE}")
     string(REGEX REPLACE "^#define[ \t]+SDL_MIXER_MINOR_VERSION[ \t]+([0-9]+)$" "\\1" SDL2_MIXER_VERSION_MINOR "${SDL2_MIXER_VERSION_MINOR_LINE}")
     string(REGEX REPLACE "^#define[ \t]+SDL_MIXER_PATCHLEVEL[ \t]+([0-9]+)$" "\\1" SDL2_MIXER_VERSION_PATCH "${SDL2_MIXER_VERSION_PATCH_LINE}")
@@ -88,7 +88,7 @@ set(SDL2_MIXER_INCLUDE_DIRS ${SDL2_MIXER_INCLUDE_DIR})
 
 include(FindPackageHandleStandardArgs)
 
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDL2_image
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDL2_mixer
         REQUIRED_VARS SDL2_MIXER_LIBRARIES SDL2_MIXER_INCLUDE_DIRS
         VERSION_VAR SDL2_MIXER_VERSION_STRING)
 

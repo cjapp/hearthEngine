@@ -12,21 +12,24 @@
 
 #include<iostream>
 
-void SoundSystem::_init()
+namespace Hearth
 {
-  Error::printMessage("---Initializing Sound...");
 
-  if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+  void SoundSystem::_init()
   {
-    std::cout <<  "    Error: Failed to initialize audio!" << std::endl;
+    Error::printMessage("---Initializing Sound...");
+
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    {
+      std::cout <<  "    Error: Failed to initialize audio!" << std::endl;
+    }
+
+    Error::printMessage("---Initialized Sound...");
   }
 
-  Error::printMessage("---Initialized Sound...");
+  void SoundSystem::_uninit()
+  {
+    Mix_Quit();
+  }
+
 }
-
-void SoundSystem::_uninit()
-{
-  Mix_Quit();
-}
-
-
