@@ -11,6 +11,7 @@
 
 
 #include "resourceManager.hpp"
+#include "soundSystem.h"
 #include "physics.h"
 #include "state.hpp"
 #include "input.hpp"

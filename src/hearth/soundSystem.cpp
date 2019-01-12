@@ -15,6 +15,9 @@
 namespace Hearth
 {
 
+  Music* SoundSystem::_music = NULL;
+  bool SoundSystem::_playing = false;
+
   void SoundSystem::_init()
   {
     Error::printMessage("---Initializing Sound...");
@@ -29,7 +32,51 @@ namespace Hearth
 
   void SoundSystem::_uninit()
   {
+    _music = NULL;
+    _playing = false;
+
     Mix_Quit();
+  }
+
+  void SoundSystem::setMusic(const std::string& name)
+  {
+    _music = ResourceManager::getMusic(name);
+
+    if(_music == nullptr)
+    {
+      Error::printMessage("   SoundSystem::Error: Failed to set Music.");
+    }
+
+  }
+
+  void SoundSystem::playMusic()
+  {
+    if(_music != nullptr && Mix_PlayingMusic() == 0)
+    {
+      Mix_PlayMusic(_music->getAudio(), -1); 
+      _playing = true;
+    }
+    else
+    {
+      Mix_ResumeMusic();
+    }
+  }
+
+
+  void SoundSystem::pauseMusic()
+  {
+    if(_music != nullptr)
+    {
+      Mix_PauseMusic();
+    }
+  }
+
+  void SoundSystem::stopMusic()
+  {
+    if(_music != nullptr)
+    {
+      Mix_HaltMusic();
+    }
   }
 
 }

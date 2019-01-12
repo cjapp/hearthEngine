@@ -4,6 +4,7 @@
 #include "hTexture.h"
 #include "font.h"
 #include "gameObject.hpp"
+#include "music.h"
 
 #include<map>
 #include<string>
@@ -24,6 +25,9 @@ namespace Hearth
       static void loadFont(const std::string& fontPath, const std::string& name);
       static Font* getFont(const std::string& name);
 
+      static void loadMusic(const std::string& musicPath, const std::string& name);
+      static Music* getMusic(const std::string& name);
+
       static void loadPrefab(GameObject* obj, const std::string& name);
       static GameObject* getPrefab(const std::string& name);
 
@@ -32,6 +36,7 @@ namespace Hearth
     private:
       static std::map<std::string, HTexture*> m_textures;
       static std::map<std::string, Font*> m_fonts;
+      static std::map<std::string, Music*> m_music;
       static std::map<std::string, GameObject*> m_prefabs;
   };
 

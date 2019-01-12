@@ -52,6 +52,8 @@ void Menu::init()
   m_quit.setName("quit");
   m_quit.setAction(quit);
 
+  SoundSystem::setMusic("theme");
+  SoundSystem::playMusic();
 
   int x = (Window::Instance().Width()/5 * 3);
   int y = (Window::Instance().Height()/4);

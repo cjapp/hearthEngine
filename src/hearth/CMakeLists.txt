@@ -28,6 +28,8 @@ set(ENGINE_SOURCE_FILES
     hTexture.cpp
     input.cpp
     input.hpp
+    music.cpp
+    music.h
     physics.cpp
     physics.h
     random.h

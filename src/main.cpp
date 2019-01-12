@@ -28,6 +28,9 @@ int main()
   ResourceManager::loadTexture("Textures/enemy.png","enemy");
   ResourceManager::loadTexture("Textures/turret.png","turret");
 
+  //load music file into game
+  ResourceManager::loadMusic("Sound/music.wav","theme");
+
   //load the fonts into the game using the resourceManager
   ResourceManager::loadFont("Fonts/Digitalt.ttf", "DEFAULT");
 
@@ -35,6 +38,7 @@ int main()
   Color col(0,0,0,255);
   Window::Instance().setColor(col);
   //Window::Instance().setFullScreenDesktop();
+
 
   //initialize the levels
   Application::Instance().AddState(&g_main);
