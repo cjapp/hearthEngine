@@ -143,6 +143,7 @@ void Menu::updateScoreBoard()
 void Menu::start()
 {
   cout << "Starting game" << endl; 
+  SoundSystem::pauseMusic();
   Application::Instance().switchState(1);
 }
 

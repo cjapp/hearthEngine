@@ -20,7 +20,7 @@ namespace Hearth
   Music::Music():
     _audio(NULL)
   {
-    std::cout << "-oooo--- Created music object." << std::endl;
+
   }
 
 
@@ -36,7 +36,6 @@ namespace Hearth
 
   bool Music::loadMusic(const std::string& file)
   {
-    std::cout << "-oooooo- Loading music from file: " << file << std::endl;
     _audio = Mix_LoadMUS(file.c_str());
     if(_audio == NULL)
     {
@@ -44,8 +43,6 @@ namespace Hearth
       Error::printMessage("   Error: Failed to load the music file."); 
       return false;
     }
-    std::cout << "Succeeded loading music" << std::endl;
     return true;
   }
-
 }

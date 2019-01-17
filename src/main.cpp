@@ -37,7 +37,7 @@ int main()
   //set the background color of the window
   Color col(0,0,0,255);
   Window::Instance().setColor(col);
-  //Window::Instance().setFullScreenDesktop();
+  Window::Instance().setFullScreenDesktop();
 
 
   //initialize the levels

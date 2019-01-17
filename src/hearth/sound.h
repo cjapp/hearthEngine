@@ -19,11 +19,14 @@ namespace Hearth
   class Sound
   {
     private:
-      Mix_Music *_music;
+      Mix_Chunk*  _audio;
 
     public:
       Sound();
       ~Sound();
+
+      bool loadSound(const std::string& filePath);
+      Mix_Chunk* getAudio(){return _audio;}
 
   };
 

@@ -71,11 +71,23 @@ namespace Hearth
     }
   }
 
+
   void SoundSystem::stopMusic()
   {
     if(_music != nullptr)
     {
       Mix_HaltMusic();
+    }
+  }
+
+
+  void SoundSystem::playSound(const std::string& name)
+  {
+    Sound* temp = ResourceManager::getSound(name);
+    if(temp == nullptr)
+    {
+      if(temp->getAudio() != nullptr)
+        Mix_PlayChannel(-1, temp->getAudio(), 0);
     }
   }
 

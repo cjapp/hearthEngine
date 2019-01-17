@@ -44,6 +44,9 @@ namespace Hearth
       static void pauseMusic();
       static void stopMusic();
 
+      //sound functions
+      static void playSound(const std::string& name);
+
     protected:
       friend class Application;
       static void init(){Instance()._init();}

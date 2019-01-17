@@ -132,6 +132,7 @@ void Game::endGame()
 
   //edit the score of global variable
   Menu::updateScore(scoreCount);
+  SoundSystem::playMusic();
   Application::Instance().switchState(0);
 }
 

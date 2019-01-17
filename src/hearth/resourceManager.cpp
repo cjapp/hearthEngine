@@ -6,6 +6,7 @@ namespace Hearth
 
   std::map<std::string, HTexture*>   ResourceManager::m_textures;
   std::map<std::string, Font*>       ResourceManager::m_fonts;
+  std::map<std::string, Sound*>       ResourceManager::m_sound;
   std::map<std::string, Music*>       ResourceManager::m_music;
   std::map<std::string, GameObject*> ResourceManager::m_prefabs;
 
@@ -56,6 +57,24 @@ namespace Hearth
     Error::printMessage("Error: name <" + name + "> is not a texture name.");
     return nullptr;
   } 
+  
+
+  void ResourceManager::loadSound(const std::string& soundPath, const std::string& name)
+  {
+    Sound* tmp = new Sound();
+    tmp->loadSound(soundPath);
+    m_sound[name] = tmp;
+  }
+
+
+  Sound* ResourceManager::getSound(const std::string& name)
+  {
+    if(m_sound[name])
+      return m_sound[name];
+
+    Error::printMessage("Error: name <" + name + "> is not a Sound name.");
+    return nullptr;
+  }
 
 
   void ResourceManager::loadMusic(const std::string& musicPath, const std::string& name)
