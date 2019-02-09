@@ -7,6 +7,8 @@
 * @edited 2017-12-10
 */
 #include "projectile.h"
+
+#include "hearth/soundSystem.h"
 #include "hearth/color.hpp"
 #include "hearth/window.hpp"
 #include "hearth/hTime.h"
@@ -77,6 +79,8 @@ void Projectile::clear()
 void Projectile::fire(float dx, float dy)
 {
   setPosition(Window::Instance().Width()/2,Window::Instance().Height() - 50);
+
+  SoundSystem::playSound("laser");
 
    dirx = dx - m_transform.m_position.x;
    diry = dy - m_transform.m_position.y;

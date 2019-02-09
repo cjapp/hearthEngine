@@ -31,6 +31,10 @@ int main()
   //load music file into game
   ResourceManager::loadMusic("Sound/music.wav","theme");
 
+  //load sound files into game
+  ResourceManager::loadSound("Sound/laser.wav","laser");
+  ResourceManager::loadSound("Sound/impact.wav","impact");
+
   //load the fonts into the game using the resourceManager
   ResourceManager::loadFont("Fonts/Digitalt.ttf", "DEFAULT");
 

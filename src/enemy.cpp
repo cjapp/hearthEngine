@@ -10,6 +10,8 @@
 #include "enemy.h"
 #include "game.h"
 #include "projectile.h"
+
+#include "hearth/soundSystem.h"
 #include "hearth/window.hpp"
 #include "hearth/hTime.h"
 #include "hearth/random.h"
@@ -60,6 +62,8 @@ void Enemy::update()
     {
       //destroy bullet "move back to start"
       tmp->reload();
+
+      SoundSystem::playSound("impact");
 
       //get score reference and increment the score
       Game* st = dynamic_cast<Game*>(m_state);

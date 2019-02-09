@@ -84,7 +84,7 @@ namespace Hearth
   void SoundSystem::playSound(const std::string& name)
   {
     Sound* temp = ResourceManager::getSound(name);
-    if(temp == nullptr)
+    if(temp != nullptr)
     {
       if(temp->getAudio() != nullptr)
         Mix_PlayChannel(-1, temp->getAudio(), 0);
