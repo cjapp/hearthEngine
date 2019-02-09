@@ -19,6 +19,7 @@ The engine currently features:
 * A camera system that is capable of transforming the state/scene instead of keeping it static as before
 * Alarm events have now been implemented(start, setDuration, and check are current functionality)
 * Framerate is capable of being capped
+* SoundSystem that loops music and plays sound, behaves more like a wrapper for SDL/_mixer
 
 The core functions that are needed by states and game objects are the init(), update(), and clear().
 * **init()** is the virtual function that is run before the frames are set up(behaves like the start and awake functions in unity)
@@ -28,6 +29,5 @@ The core functions that are needed by states and game objects are the init(), up
 Some future features I would like to include later are
 * Animated Sprites
 * Saving and loading system
-* Sound System
 
 
