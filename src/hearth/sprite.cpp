@@ -26,6 +26,7 @@ namespace Hearth
     m_visible = false;
   }
 
+
   /**
    * @brief set whether the visibility of the
    *
@@ -40,7 +41,7 @@ namespace Hearth
   /**
    * @brief Function to set the clip on spritesheet using SDL Rect
    *
-   * @param clip the SDL tect to set the clip with
+   * @param clip the SDL rect to set the clip with
    */
   void Sprite::setClip(SDL_Rect* clip)
   {
@@ -64,6 +65,7 @@ namespace Hearth
     m_clip->h = h;
   }
 
+
   /**
    * @brief Set the dimensions of the sprite
    *
@@ -75,6 +77,7 @@ namespace Hearth
     m_height = h;
     m_width = w;
   }
+
 
   /**
    * @brief Set the sprites color with this function
