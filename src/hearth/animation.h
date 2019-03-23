@@ -24,9 +24,9 @@ namespace Hearth
     private:
       std::vector<SDL_Rect> _frames;//frame array of the sprites for animation
       HTexture* _spriteSheet; //the sprite sheet that contains the frames for the animation
-      unsigned int _frameCount; //the number of frames contained in the animation
+      unsigned int _currentFrame;// the current frame index (used for when continuing/loading a state)
 
-      int _speed; //the length of time between frames of the animation
+      unsigned int _speed; //the length of time between frames of the animation
 
     public:
       Animation();
@@ -37,7 +37,8 @@ namespace Hearth
 
       void createFrame(const SDL_Rect&);
 
-      unsigned int getFrameCount(){return _frameCount;}
+      unsigned int getFrameCount(){return _frames.size();}
+      unsigned int getCurrentFrame(){return _currentFrame;}
 
       void setSpeed(int speed){_speed = speed;}
       int getSpeed(){return _speed;}
