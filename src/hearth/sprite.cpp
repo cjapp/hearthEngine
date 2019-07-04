@@ -13,16 +13,17 @@ namespace Hearth
   Sprite::Sprite():
     m_visible(false),
     m_texture(nullptr),
+    m_clip(nullptr),
     m_color(ColorEnum::MISSING)
   {
-    m_clip = new SDL_Rect();
-    setClip(0,0,0,0);
+    //m_clip = new SDL_Rect();
+    //setClip(0,0,0,0);
   }
 
   Sprite::~Sprite()
   {
     m_texture = nullptr;
-    delete m_clip;
+    //delete m_clip;
     m_visible = false;
   }
 
@@ -139,7 +140,7 @@ namespace Hearth
       if(m_texture != nullptr)
       {
         SDL_Rect renderQuad = {x,y, m_width, m_height};
-        SDL_RenderCopyEx(Render::Instance()->getRenderer(), m_texture->getTexture(), NULL, &renderQuad, deg, &pivot, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(Render::Instance()->getRenderer(), m_texture->getTexture(), m_clip, &renderQuad, deg, &pivot, SDL_FLIP_NONE);
       }
       else/*If the sprite is missing, use pink rect*/
       {
