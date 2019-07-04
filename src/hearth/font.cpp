@@ -61,14 +61,13 @@ namespace Hearth
   TTF_Font* Font::getFont(unsigned int size)
   {
 
+    //iterator for iterating through the fonts
     std::map<int, TTF_Font*>::iterator it;
     it = m_fontSizes.find(size);
 
-    if (it != m_fontSizes.end())
-    {
-      return it->second;
-    }
-    else
+    //if the iterator reaches end without finding the font-size, 
+    //create the missing font-size and return it
+    if (it == m_fontSizes.end())
     {
       TTF_Font* font = nullptr; 
       font = TTF_OpenFont(m_filePath.c_str(), size);
@@ -77,10 +76,10 @@ namespace Hearth
         m_fontSizes.insert(std::pair<int, TTF_Font*>(size, font));
 
       return font;
-    } 
+    }
 
-    /* Shouldn't get here */
-    return nullptr;
+    //should've found the font size here
+    return it->second;
   }
 
 

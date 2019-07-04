@@ -7,8 +7,10 @@ namespace Hearth
 {
 
   UIText::UIText():
-    m_font(nullptr)
+    m_font(nullptr),
+    m_size(8)
   {
+    setText(" ");
   }
 
   UIText::UIText(int x, int y, std::string text):
@@ -79,8 +81,6 @@ namespace Hearth
 
     if(m_font != nullptr)
       m_texture.loadFromFont(*this);
-    else
-      printf("Error: m_font is null, A font must be set first");
   } 
 
 }//end Hearth

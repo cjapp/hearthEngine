@@ -123,14 +123,14 @@ namespace Hearth
     SDL_Color sc = {c.r,c.g,c.b,c.a};
 
     SDL_Surface* textSurface = TTF_RenderText_Solid( text.getFont()->getFont(text.getSize()), text.getText().c_str(), sc ); 
-    if( textSurface == NULL ) 
+    if( textSurface == nullptr ) 
     { 
       printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
     } 
     else 
     { 
       m_texture = SDL_CreateTextureFromSurface(Render::Instance()->getRenderer(), textSurface ); 
-      if( m_texture == NULL ) 
+      if( m_texture == nullptr ) 
       { 
         printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() ); 
       } 
