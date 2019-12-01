@@ -29,8 +29,11 @@ namespace Hearth
       Sprite();
       ~Sprite();
 
-      void init();
-      void draw(const Transform& t, const Camera* c); 
+      virtual void init();
+      virtual void update();
+      virtual void deinit();
+      virtual void draw(const Transform& t, const Camera* c); 
+
       void setVisible(bool visibility);
       void setTexture(const std::string& name);
       void setClip(SDL_Rect* clip);

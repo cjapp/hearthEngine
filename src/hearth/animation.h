@@ -7,9 +7,9 @@
 
 struct SpriteSheet
 {
-  HTexture* _sheet;
-  unsigned int _width;
-  unsigned int _height;
+  HTexture* _sheet;//should have its own dimensions in pixels
+  unsigned int _width;//in terms of frames
+  unsigned int _height; //in terms of frames
 };
 
 class Animation
@@ -26,6 +26,9 @@ class Animation
     void addFrame(unsigned int index);
 
     unsigned int frameCount(){return _frames.size();}
+
+    int getSpeed(){return _speed};
+    void setSpeed(int spd){_speed = spd}
 };
 
 

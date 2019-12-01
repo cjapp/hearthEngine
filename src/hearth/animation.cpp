@@ -1,10 +1,12 @@
 #include "animation.h"
 
 
-Animation::Animation()
+Animation::Animation():
+  _sheet(nullptr)
 {
-
+  _frames.clear();
 }
+
 
 Animation::~Animation()
 {
@@ -13,6 +15,7 @@ Animation::~Animation()
   {
     while(!_frames.empty())
     {
+      delete _frames.front();
       _frames.erase(myvector.begin());
     }
   }
