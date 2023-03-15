@@ -72,7 +72,10 @@ namespace Hearth
   int Random::random(int min, int max)
   {
     //if min and max are the same return max
-    if min == max ? return max;
+    if (min == max)
+    { 
+        return max;
+    }
  
     if(min > max)
     {
